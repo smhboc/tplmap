@@ -11,6 +11,23 @@ The sandbox break-out techniques came from James Kett's [Server-Side Template In
 
 It can exploit several code context and blind injection scenarios. It also supports _eval()_-like code injections in Python, Ruby, PHP, Java and generic unsandboxed template engines.
 
+
+## Python 3 Support
+
+This project has been migrated to support Python 3. The following major changes were made:
+
+- Converted print statements to functions
+- Proper handling of strings and bytes
+- Updated urlparse imports to urllib.parse
+- Fixed regex escape sequences
+- Updated dictionary methods handling
+- Replaced xrange with range
+- Improved error handling
+- Updated dependencies in requirements.txt
+
+By Morteza
+
+
 Server-Side Template Injection
 ------------------------------
 
@@ -50,6 +67,7 @@ Hello John!
 $ curl -g 'http://www.target.com/page?name={{7*7}}'
 Hello 49!
 ```
+
 
 Exploitation
 ------------

@@ -17,10 +17,10 @@ def randint_n(n):
     range_end = (10**n)-1
     return random.randint(range_start, range_end)
 
-if sys.version_info.major > 2 :
+if sys.version_info.major > 2:
     letters = string.ascii_letters
-else :
-    letters = string.letters
+else:
+    letters = string.ascii_letters
 
 def randstr_n(n, chars=letters + string.digits):
     return ''.join(

@@ -64,14 +64,14 @@ class TcpServer:
 
             try:
                 buffer = self.socket.recv(100)
-                while(buffer != ''):
+                while(buffer != b''):
 
                     self.socket_state = True
 
-                    sys.stdout.write(buffer)
+                    sys.stdout.write(buffer.decode('utf-8', errors='ignore'))
                     sys.stdout.flush()
                     buffer = self.socket.recv(100)
-                if(buffer == ''):
+                if(buffer == b''):
                     return
             except socket.error:
                 pass
@@ -82,5 +82,5 @@ class TcpServer:
                 c = sys.stdin.read(1)
                 if(c == ''):
                     return
-                if(self.socket.sendall(c) != None):
+                if(self.socket.sendall(c.encode()) != None):
                     return

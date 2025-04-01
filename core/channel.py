@@ -3,9 +3,9 @@ import urllib3
 from utils.loggers import log
 import sys
 
-if sys.version_info.major > 2 :
+if sys.version_info.major > 2:
     import urllib.parse as urlparse
-else :
+else:
     import urlparse
 
 from copy import deepcopy
@@ -303,7 +303,7 @@ class Channel:
                 verify = False
                 ).text
         except requests.exceptions.ConnectionError as e:
-            if e and e[0] and e[0][0] == 'Connection aborted.':
+            if e and e.args and e.args[0] and e.args[0][0] == 'Connection aborted.':
                 log.info('Error: connection aborted, bad status line.')
                 result = None
             else:
@@ -314,5 +314,5 @@ class Channel:
 
         return result
 
-    def detected( self, technique, detail ):
+    def detected(self, technique, detail):
         pass

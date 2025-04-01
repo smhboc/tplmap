@@ -75,6 +75,3 @@ class Pug(javascript.Javascript):
         ])
 
     language = 'javascript'
-
-
-

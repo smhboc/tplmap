@@ -41,7 +41,7 @@ class Python(Plugin):
                 'call': 'render',
                 'evaluate': """%(code)s""",
                 'test_os': """'-'.join([__import__('os').name, __import__('sys').platform])""",
-                'test_os_expected': '^[\w-]+$'
+                'test_os_expected': r'^[\w-]+$'
             },
             'execute' : {
                 'call': 'evaluate',
@@ -111,4 +111,3 @@ ctx_closures = {
             closures.if_loops + closures.empty
         ],
 }
-

@@ -117,10 +117,10 @@ def _print_injection_summary(channel):
 def detect_template_injection(channel, plugins = plugins):
 
     # Loop manually the channel.injs modifying channel's inj_idx
-    if sys.version_info.major >= 2 :
+    if sys.version_info.major >= 3:
         wrappedRange = range
-    else :
-        wrappedRange = xrange
+    else:
+        wrappedRange = range
 
     for i in wrappedRange(len(channel.injs)):
 
@@ -280,7 +280,7 @@ def check_template_injection(channel):
 
                 thread.join(timeout=1)
 
-                if not thread.isAlive():
+                if not thread.is_alive():
                     continue
 
                 try:

@@ -143,4 +143,3 @@ class ScanIssue( IScanIssue ):
 
         requestHighlights = [ self._insertionPoint.getPayloadOffsets( self._helpers.stringToBytes( injection ) ) ]
         return self._callbacks.applyMarkers( requestResponse, requestHighlights, responseMarkers )
-

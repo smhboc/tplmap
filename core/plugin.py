@@ -4,7 +4,7 @@ import sys
 from utils.strings import chunkit, md5
 from utils import rand
 from utils.loggers import log
-import collections
+import collections.abc  # استفاده از collections.abc به جای collections
 import re
 import itertools
 import base64
@@ -18,8 +18,8 @@ def _recursive_update(d, u):
     # Update value of a nested dictionary of varying depth
 
     for k, v in u.items():
-        if isinstance(d, collections.Mapping):
-            if isinstance(v, collections.Mapping):
+        if isinstance(d, collections.abc.Mapping):  # استفاده از collections.abc.Mapping
+            if isinstance(v, collections.abc.Mapping):  # استفاده از collections.abc.Mapping
                 r = _recursive_update(d.get(k, {}), v)
                 d[k] = r
             else:
@@ -32,12 +32,16 @@ def _recursive_update(d, u):
 def compatible_url_safe_base64_encode(input):
     code_b64 = input
 
-    if sys.version_info.major >= 2:
-        code_b64 = code_b64.encode(encoding='UTF-8')
+    if sys.version_info.major >= 3:
+        if isinstance(code_b64, str):
+            code_b64 = code_b64.encode(encoding='UTF-8')
+    else:
+        if isinstance(code_b64, unicode):
+            code_b64 = code_b64.encode(encoding='UTF-8')
 
     code_b64 = base64.urlsafe_b64encode(code_b64)
 
-    if sys.version_info.major >= 2:
+    if sys.version_info.major >= 3:
         code_b64 = code_b64.decode(encoding='UTF-8')
 
     return code_b64
@@ -643,7 +647,12 @@ class Plugin(object):
         for chunk in chunkit(data, 500):
 
             log.debug('[b64 encoding] %s' % chunk)
+            if sys.version_info.major >= 3 and isinstance(chunk, str):
+                chunk = chunk.encode()
             chunk_b64 = base64.urlsafe_b64encode(chunk)
+            
+            if sys.version_info.major >= 3:
+                chunk_b64 = chunk_b64.decode()
 
             execution_code = payload_write % ({ 'path' : remote_path, 'chunk_b64' : chunk_b64 })
             getattr(self, call_name)(
@@ -852,4 +861,3 @@ class Plugin(object):
 
         # Update contexts on the instance
         self.contexts = contexts
-

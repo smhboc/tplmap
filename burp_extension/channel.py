@@ -32,4 +32,3 @@ class Channel:
         self.technique = technique
         self.detail = detail
         self.detect_offset = len( self.messages )
-

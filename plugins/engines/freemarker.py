@@ -54,4 +54,3 @@ class Freemarker(java.Java):
             { 'level': 5, 'prefix': '-->', 'suffix' : '<#--' },
             { 'level': 5, 'prefix': '%(closure)s as a></#list><#list [1] as a>', 'suffix' : '', 'closures' : java.ctx_closures },
         ])
-

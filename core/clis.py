@@ -57,6 +57,3 @@ class MultilineShell(cmd.Cmd):
         print('')
         print(self.inject_function('\n'.join(self.lines)))
         self.lines = []
-        
-    
-        

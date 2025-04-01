@@ -25,4 +25,3 @@ class ScannerCheck( IScannerCheck ):
 
     def consolidateDuplicateIssues( self, existingIssue, newIssue ):
         return 0
-

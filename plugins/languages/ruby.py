@@ -40,7 +40,7 @@ class Ruby(Plugin):
                 'call': 'render',
                 'evaluate': """%(code)s""",
                 'test_os' : """RUBY_PLATFORM""",
-                'test_os_expected': '^[\w._-]+$'
+                'test_os_expected': r'^[\w._-]+$'
             },
             'execute' : {
                 'call': 'evaluate',

@@ -9,4 +9,3 @@ class BurpExtender( IBurpExtender ):
         callbacks.setExtensionName( 'Tplmap' )
         callbacks.addSuiteTab( configTab )
         callbacks.registerScannerCheck( ScannerCheck( callbacks, configTab ) )
-

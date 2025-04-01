@@ -67,4 +67,3 @@ class Nunjucks(javascript.Javascript):
             { 'level': 5, 'prefix' : '#}', 'suffix' : '{#' },
 
         ])
-

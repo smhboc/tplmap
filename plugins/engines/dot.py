@@ -50,4 +50,3 @@ class Dot(javascript.Javascript):
             { 'level': 1, 'prefix': '%(closure)s;}}', 'suffix' : '{{1;', 'closures' : javascript.ctx_closures },
             
         ])
-        
